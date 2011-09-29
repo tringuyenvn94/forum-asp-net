@@ -16,7 +16,8 @@
     <asp:TextBox ID="author" runat="server"></asp:TextBox><br />
     <asp:Button ID="submit" runat="server" Text="Создать" onclick="submit_Click" />
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSource1">
+        DataSourceID="SqlDataSource1" AllowPaging="True" 
+        onrowcreated="GridView1_RowCreated" PageIndex="20">
         <Columns>
             <asp:BoundField DataField="TOPIC_ID" HeaderText="TOPIC_ID" 
                 SortExpression="TOPIC_ID" />

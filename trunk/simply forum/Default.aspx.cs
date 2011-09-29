@@ -32,23 +32,33 @@ namespace simply_forum
                 TOPICS newTopic = new TOPICS();
                 //DateTime dt = new DateTime();
 
-                small_forumEntitiesConnection smlfrm = new small_forumEntitiesConnection();
+                //small_forumEntitiesConnection smlfrm = new small_forumEntitiesConnection();
+                small_forumEntities1 smlfrm = new small_forumEntities1();
                 //SqlDataSource1.
                 //string Dt  
                 //newTopic
                 //title.Text = 
                 
-                newTopic.AUTHOR = "rfrty0";//author.Text;
-                newTopic.NAME = "fgdrt";//title.Text;
-                newTopic.TOPIC_ID = 1;
-                //newTopic.DATE_CREATE = "21.10.2011";//DateTime.Today.tToString("YYYY-MM-DD");
+                newTopic.AUTHOR = author.Text;
+                newTopic.NAME = title.Text;
+                //newTopic.TOPIC_ID = 1;
+                newTopic.DATE_CREATE = DateTime.Today;
                 //smlfrm.Connection.Open();
                 //smlfrm.Connection.BeginTransaction();
                 smlfrm.AddToTOPICS(newTopic);
                 //smlfrm.AddObject("TOPICS", newTopic);
                 //smlfrm.AcceptAllChanges();
-                //smlfrm.AddToTOPICS(newTopic)
+                
                 smlfrm.SaveChanges();
+                
+                DataBind();
+               //smlfrm.
+                //smlfrm.AddToTOPICS(newTopic)
+                //GridView1.SelectRow(1); 
+                //GridView1.UpdateRow(smlfrm.SaveChanges(), false);
+                //SqlDataSource1.
+                //smlfrm.Connection.Close();
+                //SqlDataSource1.Update();
                 //smlfrm.Connection.
                 //smlfrm.Connection.Close();
                 
@@ -64,6 +74,11 @@ namespace simply_forum
             {
                 errorlabel.Text = strError;
             }
+        }
+
+        protected void GridView1_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            //GridView1.UpdateRow(e.Row.Cells.Count, false);
         }
    
     }
