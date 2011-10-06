@@ -9,13 +9,23 @@
         ConnectionString="<%$ ConnectionStrings:small_forumConnectionString %>" 
         
         
-        SelectCommand="SELECT t.TOPIC_ID, t.NAME, t.AUTHOR, t.DATE_CREATE, (SELECT COUNT(MESSAGE_ID) AS Expr1 FROM MESSAGES AS m WHERE (TOPICS_ID = t.TOPIC_ID)) AS MESSAGES, mm.DATE_CREATE AS Expr1 FROM TOPICS AS t INNER JOIN MESSAGES AS mm ON mm.TOPICS_ID = t.TOPIC_ID or 1=1"></asp:SqlDataSource>
+        SelectCommand="SELECT 
+  t.TOPIC_ID, 
+  t.NAME, 
+  t.AUTHOR, 
+  t.DATE_CREATE, 
+  (SELECT COUNT(MESSAGE_ID) AS Expr1 FROM MESSAGES AS m WHERE (TOPICS_ID = t.TOPIC_ID)) AS MESSAGES,   mm.DATE_CREATE AS Expr1 
+FROM TOPICS AS t 
+INNER JOIN MESSAGES AS mm ON 
+  mm.TOPICS_ID = t.TOPIC_ID 
+  or 1=1 "></asp:SqlDataSource>
     <table>
     <tr>
         <td colspan="2">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
                 DataSourceID="SqlDataSource1" PageIndex="20" Caption="Список тем" 
-                DataKeyNames="TOPIC_ID">
+                DataKeyNames="TOPIC_ID" CellPadding="10" 
+                EnableSortingAndPagingCallbacks="True">
                 <Columns>
                     <asp:HyperLinkField DataNavigateUrlFields="TOPIC_ID" 
                         DataNavigateUrlFormatString="about.aspx?id={0}" DataTextField="NAME" 

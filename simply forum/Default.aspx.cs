@@ -39,9 +39,13 @@ namespace simply_forum
                 
                 smlfrm.SaveChanges();
 
+                int tid;
+                tid = newTopic.TOPIC_ID;
+                errorlabel.Text = tid.ToString();
                 GridView1.DataBind();
                 //GridView1.DataSource = smlfrm.TOPICS.Where(t => t.AUTHOR=="");
-               
+                //Server.Transfer("~/messages.aspx");
+                Response.Redirect("~/messages.aspx?tid="+tid);
             }
             else
             {
