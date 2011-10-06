@@ -11,7 +11,8 @@ namespace simply_forum
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //QueryStringParameter tid;
+            topicstheme.Text = Request.QueryString.Get("tid");
         }
     }
 }

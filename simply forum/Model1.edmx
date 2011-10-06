@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="small_forumModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="small_forumModelStoreContainer">
+          <EntitySet Name="MESSAGES" EntityType="small_forumModel.Store.MESSAGES" store:Type="Tables" store:Schema="dbo" store:Name="MESSAGES">
+            <DefiningQuery>SELECT 
+      [MESSAGES].[MESSAGE_ID] AS [MESSAGE_ID], 
+      [MESSAGES].[TEXT] AS [TEXT], 
+      [MESSAGES].[AUTHOR] AS [AUTHOR], 
+      [MESSAGES].[DATE_CREATE] AS [DATE_CREATE]
+      FROM [dbo].[MESSAGES] AS [MESSAGES]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TOPICS" EntityType="small_forumModel.Store.TOPICS" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'small_forum.dbo.MESSAGES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="MESSAGES">
+          <Key>
+            <PropertyRef Name="MESSAGE_ID" />
+            <PropertyRef Name="TEXT" />
+            <PropertyRef Name="AUTHOR" />
+            <PropertyRef Name="DATE_CREATE" />
+          </Key>
+          <Property Name="MESSAGE_ID" Type="int" Nullable="false" />
+          <Property Name="TEXT" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="AUTHOR" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DATE_CREATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TOPICS">
+          <Key>
+            <PropertyRef Name="TOPIC_ID" />
+          </Key>
+          <Property Name="TOPIC_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" MaxLength="150" />
+          <Property Name="AUTHOR" Type="varchar" MaxLength="50" />
+          <Property Name="DATE_CREATE" Type="date" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="small_forumModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="small_forumEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MESSAGES" EntityType="small_forumModel.MESSAGES" />
+          <EntitySet Name="TOPICS" EntityType="small_forumModel.TOPICS" />
+        </EntityContainer>
+        <EntityType Name="MESSAGES">
+          <Key>
+            <PropertyRef Name="MESSAGE_ID" />
+            <PropertyRef Name="TEXT" />
+            <PropertyRef Name="AUTHOR" />
+            <PropertyRef Name="DATE_CREATE" />
+          </Key>
+          <Property Name="MESSAGE_ID" Type="Int32" Nullable="false" />
+          <Property Name="TEXT" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="AUTHOR" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DATE_CREATE" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TOPICS">
+          <Key>
+            <PropertyRef Name="TOPIC_ID" />
+          </Key>
+          <Property Name="TOPIC_ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="AUTHOR" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DATE_CREATE" Type="DateTime" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="small_forumModelStoreContainer" CdmEntityContainer="small_forumEntities1">
+          <EntitySetMapping Name="MESSAGES"><EntityTypeMapping TypeName="small_forumModel.MESSAGES"><MappingFragment StoreEntitySet="MESSAGES">
+            <ScalarProperty Name="MESSAGE_ID" ColumnName="MESSAGE_ID" />
+            <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+            <ScalarProperty Name="AUTHOR" ColumnName="AUTHOR" />
+            <ScalarProperty Name="DATE_CREATE" ColumnName="DATE_CREATE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TOPICS"><EntityTypeMapping TypeName="small_forumModel.TOPICS"><MappingFragment StoreEntitySet="TOPICS">
+            <ScalarProperty Name="TOPIC_ID" ColumnName="TOPIC_ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+            <ScalarProperty Name="AUTHOR" ColumnName="AUTHOR" />
+            <ScalarProperty Name="DATE_CREATE" ColumnName="DATE_CREATE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="small_forumModel.MESSAGES" Width="1.5" PointX="0.75" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="small_forumModel.TOPICS" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
