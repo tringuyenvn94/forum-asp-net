@@ -1,0 +1,1 @@
+Forum allows add topicts and add messages to topics.
